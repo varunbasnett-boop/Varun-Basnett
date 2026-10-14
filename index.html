@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Varun Basnett - B.Tech Student, Software & Systems Enthusiast, and Avid Indie Gamer. Personal portfolio showcasing skills, engineering projects, and dedicated Steam game sanctums for Valheim, Hollow Knight, Silksong, and Vermintide 2.">
+  <meta name="keywords" content="Varun Basnett, B.Tech, Portfolio, Software Engineer, Web Developer, Indie Games, Valheim, Hollow Knight, Silksong, Vermintide 2">
+  <meta name="author" content="Varun Basnett">
+  <title>Varun Basnett | B.Tech Student & Indie Game Devotee</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Fira+Code:wght@400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&family=Pirata+One&family=MedievalSharp&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="assets/badges/varun_avatar.png">
+</head>
+<body data-theme="default">
+
+  <!-- Reading/Scroll Progress Bar -->
+  <div id="scroll-progress-bar" class="scroll-progress-bar"></div>
+
+  <!-- Custom Glow Cursor (Desktop) -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-follower" id="custom-cursor-follower"></div>
+
+  <!-- Audio Synthesizer Control -->
+  <div class="audio-control" id="audio-control" title="Toggle Sound FX (Web Audio)">
+    <button id="audio-toggle-btn" class="audio-toggle-btn" aria-label="Toggle Sound Effects">
+      <span class="audio-icon" id="audio-icon">🔊</span>
+      <span class="audio-label">FX: <strong id="audio-status">ON</strong></span>
+    </button>
+  </div>
+
+  <!-- Theme Ambient Glow Overlay -->
+  <div class="theme-glow-backdrop" id="theme-glow-backdrop"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <a href="#hero" class="brand-logo" id="brand-logo">
+        <span class="logo-symbol">&lt;VB /&gt;</span>
+        <span class="logo-name">Varun Bastard</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-dropdown-wrapper">
+            <a href="#games-vault" class="nav-link highlight-link">
+              <span class="steam-icon-mini">🎮</span> Game Vault
+            </a>
+            <div class="nav-dropdown">
+              <a href="#valheim-section" class="dropdown-item rune-text">⚔️ Valheim</a>
+              <a href="#hollow-knight-section" class="dropdown-item soul-text">🗡️ Hollow Knight</a>
+              <a href="#silksong-section" class="dropdown-item silk-text">🪡 Silksong</a>
+              <a href="#vermintide-section" class="dropdown-item warp-text">☣️ Vermintide 2</a>
+            </div>
+          </li>
+          <li><a href="#contact" class="nav-link nav-cta">Get In Touch</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Open Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" class="mobile-link">Home</a></li>
+        <li><a href="#about" class="mobile-link">About Me</a></li>
+        <li><a href="#skills" class="mobile-link">Technical Skills</a></li>
+        <li><a href="#projects" class="mobile-link">Engineering Projects</a></li>
+        <li class="mobile-group-title">Steam Indie Vault</li>
+        <li><a href="#valheim-section" class="mobile-link rune-text">⚔️ Valheim (Norse Realm)</a></li>
+        <li><a href="#hollow-knight-section" class="mobile-link soul-text">🗡️ Hollow Knight (Hallownest)</a></li>
+        <li><a href="#silksong-section" class="mobile-link silk-text">🪡 Silksong (Pharloom)</a></li>
+        <li><a href="#vermintide-section" class="mobile-link warp-text">☣️ Vermintide 2 (Grimdark)</a></li>
+        <li><a href="#contact" class="mobile-link mobile-cta">Contact Varun</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <canvas id="hero-particle-canvas" class="hero-particle-canvas"></canvas>
+    
+    <div class="hero-container">
+      <div class="hero-content" data-reveal="fade-up">
+        <div class="badge-pill">
+          <span class="pulsing-dot"></span>
+          <span>B.Tech Student &amp; Software Developer</span>
+        </div>
+        
+        <h1 class="hero-title">
+          Hi, I'm <span class="gradient-text glow-text">Varun Basnett</span>
+        </h1>
+
+        <div class="typing-container">
+          <span class="typing-prefix">&gt; </span>
+          <span class="typing-text" id="typing-text">Building Scalable Systems &amp; Web Architectures</span>
+          <span class="typing-cursor">|</span>
+        </div>
+
+        <p class="hero-description">
+          An engineering student blending computer science fundamentals with modern web development. When not architecting clean code, tackling Data Structures, or designing reactive interfaces, I immerse myself in deep-dive indie games on Steam—mastering atmospheric lore, intricate mechanics, and high-stakes survival.
+        </p>
+
+        <!-- Quick CTA Buttons -->
+        <div class="hero-actions">
+          <a href="#skills" class="btn btn-primary">
+            <span>Explore My Skills</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M13.5 19l6-7-6-7v4H4v6h9.5v4z"/></svg>
+          </a>
+          <a href="#games-vault" class="btn btn-secondary game-btn">
+            <span>Enter The Game Vault</span>
+            <span class="steam-pill">🎮 Indie Showcase</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost">Contact Me</a>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="hero-metrics">
+          <div class="metric-card" data-reveal="fade-up" data-delay="100">
+            <span class="metric-value">B.Tech</span>
+            <span class="metric-label">Engineering Undergrad</span>
+          </div>
+          <div class="metric-card" data-reveal="fade-up" data-delay="200">
+            <span class="metric-value">10+</span>
+            <span class="metric-label">Key Tech Stacks</span>
+          </div>
+          <div class="metric-card" data-reveal="fade-up" data-delay="300">
+            <span class="metric-value">500+</span>
+            <span class="metric-label">Steam Indie Hours</span>
+          </div>
+          <div class="metric-card" data-reveal="fade-up" data-delay="400">
+            <span class="metric-value">4</span>
+            <span class="metric-label">Signature Game Sanctums</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Avatar -->
+      <div class="hero-visual" data-reveal="zoom-in">
+        <div class="avatar-wrapper">
+          <div class="avatar-glow-ring"></div>
+          <div class="avatar-orbit orbit-1"></div>
+          <div class="avatar-orbit orbit-2"></div>
+          <img src="assets/badges/varun_avatar.png" alt="Varun Basnett Avatar" class="hero-avatar-img">
+          
+          <!-- Floating mini badges -->
+          <div class="floating-badge badge-code" title="Clean Code & Problem Solving">
+            <span class="fb-icon">&lt;/&gt;</span>
+            <span class="fb-text">B.Tech Core</span>
+          </div>
+          <div class="floating-badge badge-steam" title="Passionate Indie Gamer">
+            <span class="fb-icon">🎮</span>
+            <span class="fb-text">Steam Gamer</span>
+          </div>
+          <div class="floating-badge badge-valheim" title="Valheim Explorer">
+            <span class="fb-icon">ᛟ</span>
+            <span class="fb-text">Viking Builder</span>
+          </div>
+          <div class="floating-badge badge-hk" title="Hallownest Completionist">
+            <span class="fb-icon">🗡️</span>
+            <span class="fb-text">Pure Nail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#about" class="scroll-down-indicator" aria-label="Scroll Down">
+      <span class="mouse-icon">
+        <span class="wheel"></span>
+      </span>
+      <span class="scroll-hint">SCROLL TO DISCOVER</span>
+    </a>
+  </section>
+
+  <!-- About Me Section -->
+  <section class="section about-section" id="about">
+    <div class="section-container">
+      <div class="section-header" data-reveal="fade-up">
+        <span class="section-subtitle">// GET TO KNOW ME</span>
+        <h2 class="section-title">Engineering Mindset &amp; Passion for Craft</h2>
+        <div class="section-bar"></div>
+      </div>
+
+      <div class="about-grid">
+        <!-- Text Column -->
+        <div class="about-text-col" data-reveal="fade-right">
+          <h3 class="about-heading">
+            Student of Technology. Architect of Solutions. Connoisseur of Indie Masterpieces.
+          </h3>
+          <p class="about-p">
+            I am <strong>Varun Basnett</strong>, a <strong>B.Tech student</strong> with a rigorous focus on software engineering, algorithms, and full-stack development. My technical journey is fueled by a relentless curiosity for how complex systems operate—from how a database query executes under the hood to how a game loop calculates 60fps physics simulations.
+          </p>
+          <p class="about-p">
+            I believe engineering and game design share a foundational truth: <em>the greatest experiences emerge from precision, clean architecture, and obsessive attention to detail</em>. Whether I am writing optimized backend logic or studying the procedural world generation of <strong>Valheim</strong>, the frame-perfect combat choreography of <strong>Hollow Knight</strong>, the silky agility of <strong>Silksong</strong>, or the cooperative chaos of <strong>Vermintide 2</strong>, I absorb design philosophies that enrich my development craft.
+          </p>
+
+          <!-- Core Values -->
+          <div class="value-cards">
+            <div class="value-item">
+              <div class="value-icon">⚡</div>
+              <div class="value-content">
+                <h4>Performance-First Mindset</h4>
+                <p>Writing lean, algorithmic code with clean time and space complexities.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🎨</div>
+              <div class="value-content">
+                <h4>Immersive User Experiences</h4>
+                <p>Pairing high engineering standards with dynamic, responsive, and animated UI/UX.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <div class="value-icon">🛡️</div>
+              <div class="value-content">
+                <h4>Continuous Resilience</h4>
+                <p>Tackling tough bugs with the same stamina used to defeat Grimdark horde bosses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic & Technical Highlight Card -->
+        <div class="about-card-col" data-reveal="fade-left">
+          <div class="highlight-glass-card">
+            <div class="card-glow"></div>
+            <div class="card-header-badge">
+              <span class="terminal-dot red"></span>
+              <span class="terminal-dot yellow"></span>
+              <span class="terminal-dot green"></span>
+              <span class="terminal-title">varun_profile.json</span>
+            </div>
+            <div class="json-code-block">
+<pre><code>{
+  <span class="j-key">"name"</span>: <span class="j-str">"Varun Basnett"</span>,
+  <span class="j-key">"role"</span>: <span class="j-str">"B.Tech Undergraduate"</span>,
+  <span class="j-key">"academic_focus"</span>: [
+    <span class="j-str">"Data Structures &amp; Algorithms"</span>,
+    <span class="j-str">"Operating Systems &amp; Networks"</span>,
+    <span class="j-str">"Full-Stack Web Engineering"</span>,
+    <span class="j-str">"Database Systems (DBMS)"</span>
+  ],
+  <span class="j-key">"passions"</span>: [
+    <span class="j-str">"System Architecture"</span>,
+    <span class="j-str">"Modern Web Interfaces"</span>,
+    <span class="j-str">"Indie Game Mechanics on Steam"</span>
+  ],
+  <span class="j-key">"steam_hall_of_fame"</span>: [
+    <span class="j-str">"Valheim (10th Norse Realm)"</span>,
+    <span class="j-str">"Hollow Knight (Void Heart)"</span>,
+    <span class="j-str">"Hollow Knight: Silksong (Awaiting Citadel)"</span>,
+    <span class="j-str">"Vermintide 2 (Legend Horde Sslayer)"</span>
+  ],
+  <span class="j-key">"status"</span>: <span class="j-str">"Ready to Build &amp; Innovate"</span>
+}</code></pre>
+            </div>
+            
+            <div class="card-footer-stats">
+              <div class="footer-stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-desc">Dedication</span>
+              </div>
+              <div class="footer-stat">
+                <span class="stat-number">24/7</span>
+                <span class="stat-desc">Problem Solving</span>
+              </div>
+              <div class="footer-stat">
+                <span class="stat-number">∞</span>
+                <span class="stat-desc">Curiosity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Skills Section -->
+  <section class="section skills-section" id="skills">
+    <div class="section-container">
+      <div class="section-header" data-reveal="fade-up">
+        <span class="section-subtitle">// COMPETENCIES &amp; TOOLKIT</span>
+        <h2 class="section-title">Personal Skill Highlights</h2>
+        <p class="section-lead">A comprehensive view of my technical proficiencies, engineering competencies, and development toolset as a B.Tech student.</p>
+        <div class="section-bar"></div>
+      </div>
+
+      <!-- Skills Category Filter Tabs -->
+      <div class="skills-filter-nav" data-reveal="fade-up">
+        <button class="filter-tab active" data-filter="all">All Skills</button>
+        <button class="filter-tab" data-filter="languages">Languages</button>
+        <button class="filter-tab" data-filter="web">Web &amp; Frontend</button>
+        <button class="filter-tab" data-filter="core">CS Fundamentals</button>
+        <button class="filter-tab" data-filter="tools">Tools &amp; DevOps</button>
+        <button class="filter-tab" data-filter="game-logic">Game Logic &amp; Design</button>
+      </div>
+
+      <!-- Skills Grid with Interactive Animated Meters -->
+      <div class="skills-grid" id="skills-grid">
+
+        <!-- C / C++ -->
+        <div class="skill-card" data-category="languages core" data-reveal="fade-up">
+          <div class="skill-top">
+            <div class="skill-icon-box cpp">C++</div>
+            <div class="skill-info">
+              <h4 class="skill-name">C / C++</h4>
+              <span class="skill-type">System Programming &amp; DSA</span>
+            </div>
+            <span class="skill-percent" data-target="90">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="90%"></div>
+          </div>
+          <p class="skill-detail">Deep understanding of pointers, memory management, OOP, and high-performance competitive programming algorithms.</p>
+        </div>
+
+        <!-- Java -->
+        <div class="skill-card" data-category="languages core" data-reveal="fade-up" data-delay="100">
+          <div class="skill-top">
+            <div class="skill-icon-box java">☕</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Java</h4>
+              <span class="skill-type">Enterprise OOP &amp; Core</span>
+            </div>
+            <span class="skill-percent" data-target="85">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="85%"></div>
+          </div>
+          <p class="skill-detail">Solid grounding in Object-Oriented Design, Java Collections Framework, multithreading basics, and robust architectural patterns.</p>
+        </div>
+
+        <!-- Python -->
+        <div class="skill-card" data-category="languages" data-reveal="fade-up" data-delay="150">
+          <div class="skill-top">
+            <div class="skill-icon-box python">🐍</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Python</h4>
+              <span class="skill-type">Scripting, Automation &amp; Logic</span>
+            </div>
+            <span class="skill-percent" data-target="88">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="88%"></div>
+          </div>
+          <p class="skill-detail">Rapid prototyping, automation scripts, data handling, API integrations, and algorithm visualization.</p>
+        </div>
+
+        <!-- JavaScript & TypeScript -->
+        <div class="skill-card" data-category="languages web" data-reveal="fade-up" data-delay="200">
+          <div class="skill-top">
+            <div class="skill-icon-box js">JS</div>
+            <div class="skill-info">
+              <h4 class="skill-name">JavaScript (ES6+) &amp; TS</h4>
+              <span class="skill-type">Modern Asynchronous Web</span>
+            </div>
+            <span class="skill-percent" data-target="92">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="92%"></div>
+          </div>
+          <p class="skill-detail">DOM manipulation, Async/Await, Canvas API, Web Audio API, event loops, and strict type safety with TypeScript.</p>
+        </div>
+
+        <!-- HTML5 & Responsive CSS3 -->
+        <div class="skill-card" data-category="web" data-reveal="fade-up" data-delay="250">
+          <div class="skill-top">
+            <div class="skill-icon-box css">🎨</div>
+            <div class="skill-info">
+              <h4 class="skill-name">HTML5 &amp; Modern CSS3</h4>
+              <span class="skill-type">Flexbox, Grid, Animations &amp; UI</span>
+            </div>
+            <span class="skill-percent" data-target="95">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="95%"></div>
+          </div>
+          <p class="skill-detail">Complex keyframe animations, glassmorphism, responsive viewports, CSS custom properties, and accessible semantic markup.</p>
+        </div>
+
+        <!-- React.js & Component UI -->
+        <div class="skill-card" data-category="web" data-reveal="fade-up" data-delay="300">
+          <div class="skill-top">
+            <div class="skill-icon-box react">⚛️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">React.js &amp; Frontend Stack</h4>
+              <span class="skill-type">Declarative UI &amp; State</span>
+            </div>
+            <span class="skill-percent" data-target="86">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="86%"></div>
+          </div>
+          <p class="skill-detail">Functional components, custom hooks, reactive state management, component lifecycle, and modular SPA design.</p>
+        </div>
+
+        <!-- Data Structures & Algorithms -->
+        <div class="skill-card" data-category="core" data-reveal="fade-up" data-delay="350">
+          <div class="skill-top">
+            <div class="skill-icon-box dsa">🌲</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Data Structures &amp; Algorithms</h4>
+              <span class="skill-type">Academic &amp; Practical Problem Solving</span>
+            </div>
+            <span class="skill-percent" data-target="88">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="88%"></div>
+          </div>
+          <p class="skill-detail">Trees, Graphs, Dynamic Programming, Greedy Algorithms, Heaps, Hash Tables, and Big-O computational analysis.</p>
+        </div>
+
+        <!-- Database Systems & SQL -->
+        <div class="skill-card" data-category="core tools" data-reveal="fade-up" data-delay="400">
+          <div class="skill-top">
+            <div class="skill-icon-box sql">🗄️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">DBMS &amp; SQL</h4>
+              <span class="skill-type">Relational Queries &amp; Schema Design</span>
+            </div>
+            <span class="skill-percent" data-target="84">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="84%"></div>
+          </div>
+          <p class="skill-detail">Normalization, ACID properties, complex joins, indexing, query optimization in MySQL and PostgreSQL.</p>
+        </div>
+
+        <!-- Operating Systems & Networks -->
+        <div class="skill-card" data-category="core" data-reveal="fade-up" data-delay="450">
+          <div class="skill-top">
+            <div class="skill-icon-box os">💻</div>
+            <div class="skill-info">
+              <h4 class="skill-name">OS &amp; Computer Networks</h4>
+              <span class="skill-type">Core CS Engineering Principles</span>
+            </div>
+            <span class="skill-percent" data-target="82">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="82%"></div>
+          </div>
+          <p class="skill-detail">Process synchronization, multithreading, paging, virtual memory, TCP/IP stack, socket architecture, and HTTP protocol.</p>
+        </div>
+
+        <!-- Git, GitHub & Linux -->
+        <div class="skill-card" data-category="tools" data-reveal="fade-up" data-delay="500">
+          <div class="skill-top">
+            <div class="skill-icon-box git">🐙</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Git, GitHub &amp; Linux CLI</h4>
+              <span class="skill-type">Version Control &amp; Shell</span>
+            </div>
+            <span class="skill-percent" data-target="90">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="90%"></div>
+          </div>
+          <p class="skill-detail">Branching workflows, merge strategies, interactive rebasing, Bash scripting, and terminal environment efficiency.</p>
+        </div>
+
+        <!-- Game Loop & Mechanics -->
+        <div class="skill-card" data-category="game-logic" data-reveal="fade-up" data-delay="550">
+          <div class="skill-top">
+            <div class="skill-icon-box game">🎯</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Game Loops &amp; State Logic</h4>
+              <span class="skill-type">Indie Mechanics &amp; Physics Math</span>
+            </div>
+            <span class="skill-percent" data-target="85">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="85%"></div>
+          </div>
+          <p class="skill-detail">Frame delta timing, collision detection, particle engines, spatial partitioning, state machines, and Metroidvania level logic.</p>
+        </div>
+
+        <!-- Systems Thinking -->
+        <div class="skill-card" data-category="game-logic core" data-reveal="fade-up" data-delay="600">
+          <div class="skill-top">
+            <div class="skill-icon-box systems">⚙️</div>
+            <div class="skill-info">
+              <h4 class="skill-name">Systems Thinking &amp; Architecture</h4>
+              <span class="skill-type">Holistic Engineering Design</span>
+            </div>
+            <span class="skill-percent" data-target="87">0%</span>
+          </div>
+          <div class="skill-progress-track">
+            <div class="skill-progress-fill" data-progress="87%"></div>
+          </div>
+          <p class="skill-detail">Deconstructing large monolithic problems into decoupled modules, inspired by co-op survival and swarm simulation systems.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Engineering Projects -->
+  <section class="section projects-section" id="projects">
+    <div class="section-container">
+      <div class="section-header" data-reveal="fade-up">
+        <span class="section-subtitle">// WHAT I BUILD</span>
+        <h2 class="section-title">Academic &amp; Passion Projects</h2>
+        <p class="section-lead">Bridging technical computer science algorithms with engaging, interactive software interfaces.</p>
+        <div class="section-bar"></div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Project 1: SteamVault Hub -->
+        <div class="project-card" data-reveal="fade-up">
+          <div class="project-image-box">
+            <img src="assets/games/valheim_hero.jpg" alt="SteamVault Project" class="project-img">
+            <div class="project-overlay">
+              <span class="overlay-tag">Full-Stack Web App</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">Web Audio</span>
+              <span class="tag">REST API</span>
+              <span class="tag">CSS Canvas</span>
+            </div>
+            <h3 class="project-title">SteamVault: Indie Lore &amp; Tracker</h3>
+            <p class="project-desc">
+              An interactive web application connecting with Steam store data to catalog indie games, calculate achievement completion times, and visualize custom lore trees with ambient soundscapes.
+            </p>
+            <div class="project-footer">
+              <a href="#games-vault" class="project-link">Explore Game Sanctums →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Hallownest Pathfinding Visualizer -->
+        <div class="project-card" data-reveal="fade-up" data-delay="150">
+          <div class="project-image-box">
+            <img src="assets/games/hk_hero.jpg" alt="Pathfinding Visualizer" class="project-img">
+            <div class="project-overlay">
+              <span class="overlay-tag">Algorithm Simulation</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">Algorithms</span>
+              <span class="tag">Dijkstra / A*</span>
+              <span class="tag">Data Structures</span>
+              <span class="tag">Canvas</span>
+            </div>
+            <h3 class="project-title">Hallownest Labyrinth Pathfinding</h3>
+            <p class="project-desc">
+              Graph traversal and shortest-path visualizer inspired by Hollow Knight's subterranean map. Demonstrates A*, Dijkstra, and BFS exploring obstacles with glowing Lumafly soul nodes.
+            </p>
+            <div class="project-footer">
+              <a href="#hollow-knight-section" class="project-link">View Nail Slash &amp; Soul →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Norse Mead & Resource Calculator -->
+        <div class="project-card" data-reveal="fade-up" data-delay="300">
+          <div class="project-image-box">
+            <img src="assets/games/silksong_hero.jpg" alt="Silk Thread Simulation" class="project-img">
+            <div class="project-overlay">
+              <span class="overlay-tag">Interactive Graphics</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">HTML5 Canvas</span>
+              <span class="tag">Verlet Integration</span>
+              <span class="tag">Physics Math</span>
+              <span class="tag">Bespoke UI</span>
+            </div>
+            <h3 class="project-title">Pharloom Silk String Cloth Engine</h3>
+            <p class="project-desc">
+              A lightweight real-time Verlet cloth &amp; silk thread simulation rendered on HTML5 Canvas. Users can draw dynamic woven silk strings that vibrate with harmonic bell frequencies upon pluck.
+            </p>
+            <div class="project-footer">
+              <a href="#silksong-section" class="project-link">Try Silk Weaving Live →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Skaven Horde Simulator -->
+        <div class="project-card" data-reveal="fade-up" data-delay="450">
+          <div class="project-image-box">
+            <img src="assets/games/vermintide2_hero.jpg" alt="Horde AI Engine" class="project-img">
+            <div class="project-overlay">
+              <span class="overlay-tag">Systems &amp; AI</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <div class="project-tags">
+              <span class="tag">C++ / JS</span>
+              <span class="tag">Flocking AI</span>
+              <span class="tag">Spatial Grid</span>
+              <span class="tag">Optimization</span>
+            </div>
+            <h3 class="project-title">Warpstone Swarm: Horde Simulation</h3>
+            <p class="project-desc">
+              High-performance entity simulation modeling 500+ autonomous Skaven agents navigating obstacles via Boids flocking algorithms and spatial hash grids, inspired by Vermintide 2.
+            </p>
+            <div class="project-footer">
+              <a href="#vermintide-section" class="project-link">Enter Vermintide Sanctum →</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- STEAM & INDIE GAMES SANCTUM (THEMED SEPARATELY FOR EACH GAME)             -->
+  <!-- ========================================================================= -->
+
+  <section class="steam-vault-section" id="games-vault">
+    
+    <!-- Vault Header & Steam Profile Highlight -->
+    <div class="section-container">
+      <div class="vault-hero-banner" data-reveal="fade-up">
+        <div class="steam-profile-card">
+          <div class="steam-avatar-box">
+            <img src="assets/badges/steam_badge.png" alt="Steam Badge" class="steam-profile-badge">
+            <span class="steam-status-indicator" title="Online & Gaming"></span>
+          </div>
+          <div class="steam-profile-info">
+            <div class="steam-level-badge">
+              <span class="lvl-label">STEAM LEVEL</span>
+              <span class="lvl-num">48</span>
+            </div>
+            <h2 class="steam-player-name">Varun Basnett <span class="steam-tagline">/ Indie Connoisseur</span></h2>
+            <p class="steam-bio">
+              "Mastering challenging boss patterns, exploring procedural Norse archipelagos, unraveling bug lore in Hallownest, and holding the frontline against Skaven swarms. Indie games aren't just entertainment—they're masterclasses in game design, atmosphere, and resilient problem solving."
+            </p>
+            <div class="steam-stats-row">
+              <div class="steam-stat-item">
+                <span class="ss-val">50+</span>
+                <span class="ss-label">Indie Games Played</span>
+              </div>
+              <div class="steam-stat-item">
+                <span class="ss-val">100%</span>
+                <span class="ss-label">Dedication</span>
+              </div>
+              <div class="steam-stat-item">
+                <span class="ss-val">Steam</span>
+                <span class="ss-label">Primary Platform</span>
+              </div>
+              <div class="steam-stat-item">
+                <span class="ss-val">Top 4</span>
+                <span class="ss-label">Featured Sanctums</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Game Sanctum Selector Jump Bar -->
+      <div class="game-sanctum-quicknav" data-reveal="fade-up">
+        <span class="quicknav-title">Select Themed Sanctum:</span>
+        <div class="quicknav-buttons">
+          <a href="#valheim-section" class="game-nav-btn valheim-pill" onclick="switchTheme('valheim')">
+            <img src="assets/games/valheim_icon.png" alt="Valheim" class="pill-thumb">
+            <span>Valheim</span>
+          </a>
+          <a href="#hollow-knight-section" class="game-nav-btn hk-pill" onclick="switchTheme('hk')">
+            <img src="assets/games/hk_icon.png" alt="Hollow Knight" class="pill-thumb">
+            <span>Hollow Knight</span>
+          </a>
+          <a href="#silksong-section" class="game-nav-btn silksong-pill" onclick="switchTheme('silksong')">
+            <img src="assets/games/silksong_icon.png" alt="Silksong" class="pill-thumb">
+            <span>Silksong</span>
+          </a>
+          <a href="#vermintide-section" class="game-nav-btn vermintide-pill" onclick="switchTheme('vermintide')">
+            <img src="assets/games/vermintide2_icon.png" alt="Vermintide 2" class="pill-thumb">
+            <span>Vermintide 2</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 1. VALHEIM: The Tenth Norse World                                       -->
+    <!-- Theme: Norse Runes, Mistlands Fog, Campfire Embers, Viking Mead Buffs   -->
+    <!-- ======================================================================= -->
+    <div class="game-sanctum-wrapper valheim-theme" id="valheim-section">
+      <!-- Background Ambient Canvas for Floating Campfire Embers -->
+      <canvas id="valheim-embers-canvas" class="game-ambient-canvas"></canvas>
+
+      <div class="sanctum-container">
+        <!-- Game Themed Header -->
+        <div class="game-brand-banner" data-reveal="fade-up">
+          <div class="game-logo-wrapper valheim-glow">
+            <img src="assets/games/valheim_logo.png" alt="Valheim Official Logo" class="official-game-logo">
+            <img src="assets/badges/valheim_rune_badge.png" alt="Valheim Norse Rune Badge" class="game-themed-badge float-animation">
+          </div>
+          <div class="game-meta-tags">
+            <span class="game-tag valheim-tag">⚔️ Viking Survival</span>
+            <span class="game-tag valheim-tag">🌲 Procedural Norse Wilderness</span>
+            <span class="game-tag valheim-tag">🛡️ Iron Gate Studio</span>
+            <span class="game-tag valheim-tag">⭐ Steam Overwhelmingly Positive</span>
+          </div>
+        </div>
+
+        <div class="game-showcase-grid">
+          
+          <!-- Lore & Personal Reflection -->
+          <div class="game-info-card" data-reveal="fade-right">
+            <div class="runic-border-frame">
+              <span class="norse-rune-heading">ᚠ ᚢ ᚦ ᚨ ᚱ ᚲ • THE TENTH REALM • ᚷ ᚹ ᛟ ᛏ</span>
+              <h3 class="game-card-title">Why Varun Loves Valheim:</h3>
+              <p class="game-lore-text">
+                Dropped into purgatory with nothing but a tunic and Viking determination, <strong>Valheim</strong> is an absolute masterpiece of atmosphere, procedural wilderness, and survival architecture. The dynamic weather system—from ferocious Black Forest thunderstorms to the eerie bioluminescent haze of the Mistlands—creates an unforgettable sense of place.
+              </p>
+              <p class="game-lore-text">
+                As a student engineer, I am fascinated by Valheim's <em>structural integrity building mechanics</em>: timber supports, iron beams, and smoke ventilation physics require real architectural logic. Conquering the biomes with my Viking clan and sailing longships across uncharted oceans embodies the thrill of shared resilience.
+              </p>
+
+              <!-- Defeated Boss Trophy Wall -->
+              <div class="valheim-trophies-block">
+                <h4 class="subhead-trophy">🏆 Conquered Boss Trophies:</h4>
+                <div class="trophy-rack">
+                  <div class="trophy-item active" title="Eikthyr - Lord of Meadows">
+                    <span class="trophy-icon">🦌</span>
+                    <span class="trophy-name">Eikthyr</span>
+                  </div>
+                  <div class="trophy-item active" title="The Elder - Heart of the Forest">
+                    <span class="trophy-icon">🌲</span>
+                    <span class="trophy-name">The Elder</span>
+                  </div>
+                  <div class="trophy-item active" title="Bonemass - Swamp Abomination">
+                    <span class="trophy-icon">☠️</span>
+                    <span class="trophy-name">Bonemass</span>
+                  </div>
+                  <div class="trophy-item active" title="Moder - Mountain Dragon">
+                    <span class="trophy-icon">🐉</span>
+                    <span class="trophy-name">Moder</span>
+                  </div>
+                  <div class="trophy-item active" title="Yagluth - Fuling King">
+                    <span class="trophy-icon">👑</span>
+                    <span class="trophy-name">Yagluth</span>
+                  </div>
+                  <div class="trophy-item active" title="The Queen - Mistlands Sovereign">
+                    <span class="trophy-icon">🪲</span>
+                    <span class="trophy-name">The Queen</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Rune Stones -->
+              <div class="norse-runes-bar">
+                <span class="rune-instruction">Hover over the Elder Futhark Runes to invoke their blessing:</span>
+                <div class="runes-container">
+                  <span class="interactive-rune" data-rune="Fehu" data-desc="Wealth &amp; Abundance">ᚠ</span>
+                  <span class="interactive-rune" data-rune="Uruz" data-desc="Raw Strength &amp; Endurance">ᚢ</span>
+                  <span class="interactive-rune" data-rune="Thurisaz" data-desc="Protection &amp; Hammer of Thor">ᚦ</span>
+                  <span class="interactive-rune" data-rune="Ansuz" data-desc="Wisdom of Odin">ᚨ</span>
+                  <span class="interactive-rune" data-rune="Raidho" data-desc="The Viking Longship Voyage">ᚱ</span>
+                  <span class="interactive-rune" data-rune="Algiz" data-desc="Divine Guardian Aegis">ᛉ</span>
+                  <span class="interactive-rune" data-rune="Othala" data-desc="Homestead &amp; Longhouse">ᛟ</span>
+                </div>
+                <div class="rune-translation" id="rune-translation">Hover a rune to decipher the ancient Norse inscription...</div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Interactive Viking Cauldron & Food Buff Station -->
+          <div class="game-interactive-card" data-reveal="fade-left">
+            <div class="valheim-interactive-ui">
+              <div class="card-glass-header">
+                <span class="ui-title">🍲 Mead Hall Feasting Station</span>
+                <span class="ui-tag">Interactive Simulation</span>
+              </div>
+
+              <div class="valheim-visual-stage">
+                <img src="assets/games/valheim_screenshot.jpg" alt="Valheim Screenshot" class="stage-screenshot">
+                <div class="campfire-glow-effect"></div>
+              </div>
+
+              <!-- Live Health & Stamina Bars that React to Food! -->
+              <div class="viking-vital-bars">
+                <div class="vital-row">
+                  <div class="vital-label-box">
+                    <span class="vital-icon">❤️</span>
+                    <span class="vital-name">VIKING HEALTH</span>
+                    <span class="vital-val" id="valheim-hp-val">175 / 175</span>
+                  </div>
+                  <div class="vital-track hp-track">
+                    <div class="vital-fill hp-fill" id="valheim-hp-bar" style="width: 75%;"></div>
+                  </div>
+                </div>
+
+                <div class="vital-row">
+                  <div class="vital-label-box">
+                    <span class="vital-icon">⚡</span>
+                    <span class="vital-name">STAMINA POOL</span>
+                    <span class="vital-val" id="valheim-stam-val">160 / 160</span>
+                  </div>
+                  <div class="vital-track stam-track">
+                    <div class="vital-fill stam-fill" id="valheim-stam-bar" style="width: 70%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Food Buttons -->
+              <div class="viking-foods-grid">
+                <span class="feasting-title">Consume Viking Foods to Surge Stats:</span>
+                <div class="food-buttons">
+                  <button class="food-btn" onclick="consumeValheimFood('lox')">
+                    <span class="food-icon">🥩</span>
+                    <span class="food-label">Lox Meat Pie</span>
+                    <span class="food-boost">+75 HP / +24 STAM</span>
+                  </button>
+                  <button class="food-btn" onclick="consumeValheimFood('serpent')">
+                    <span class="food-icon">🍲</span>
+                    <span class="food-label">Serpent Stew</span>
+                    <span class="food-boost">+80 HP / +26 STAM</span>
+                  </button>
+                  <button class="food-btn" onclick="consumeValheimFood('salad')">
+                    <span class="food-icon">🥗</span>
+                    <span class="food-label">Salad of the Mist</span>
+                    <span class="food-boost">+15 HP / +80 STAM</span>
+                  </button>
+                  <button class="food-btn" onclick="consumeValheimFood('mead')">
+                    <span class="food-icon">🍺</span>
+                    <span class="food-label">Barley Wine Mead</span>
+                    <span class="food-boost">+Fire Resist &amp; Buff</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="valheim-sound-action">
+                <button class="valheim-horn-btn" id="valheim-horn-trigger" onclick="playValheimHorn()">
+                  <span>📯 Blow the Gjallarhorn</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 2. HOLLOW KNIGHT: The Ruined Kingdom of Hallownest                      -->
+    <!-- Theme: Soul Particles, Deep Blue/Void, Nail Slashes, Charm Loadout     -->
+    <!-- ======================================================================= -->
+    <div class="game-sanctum-wrapper hk-theme" id="hollow-knight-section">
+      <!-- Background Ambient Canvas for Floating Lumafly Soul Orbs -->
+      <canvas id="hk-lumafly-canvas" class="game-ambient-canvas"></canvas>
+
+      <div class="sanctum-container">
+        <!-- Game Themed Header -->
+        <div class="game-brand-banner" data-reveal="fade-up">
+          <div class="game-logo-wrapper hk-glow">
+            <img src="assets/games/hk_logo.png" alt="Hollow Knight Official Logo" class="official-game-logo">
+            <img src="assets/badges/hk_knight_badge.png" alt="Hollow Knight Mask Badge" class="game-themed-badge float-animation">
+          </div>
+          <div class="game-meta-tags">
+            <span class="game-tag hk-tag">🗡️ Masterpiece Metroidvania</span>
+            <span class="game-tag hk-tag">🌌 Soul &amp; Void Lore</span>
+            <span class="game-tag hk-tag">🪲 Team Cherry</span>
+            <span class="game-tag hk-tag">🏆 112% Completionist</span>
+          </div>
+        </div>
+
+        <div class="game-showcase-grid">
+
+          <!-- Interactive Nail Slash & Soul Focus Sandbox -->
+          <div class="game-interactive-card" data-reveal="fade-right">
+            <div class="hk-interactive-ui" id="hk-interactive-arena">
+              <div class="card-glass-header">
+                <span class="ui-title">🗡️ Hallownest Combat &amp; Soul Chamber</span>
+                <span class="ui-tag">Click Arena to Slash Nail</span>
+              </div>
+
+              <!-- Interactive Slash Arena -->
+              <div class="hk-slash-arena" id="hk-slash-arena" title="Click or Tap anywhere here to strike with the Pure Nail!">
+                <img src="assets/games/hk_screenshot.jpg" alt="Hollow Knight Screenshot" class="stage-screenshot">
+                <div class="slash-hint-banner">
+                  <span>⚡ CLICK ANYWHERE TO UNLEASH PURE NAIL SLASH ⚡</span>
+                </div>
+                <!-- Nail Slash SVG Container -->
+                <div class="nail-slash-effect" id="nail-slash-effect"></div>
+              </div>
+
+              <!-- Soul Vessel & Health Masks -->
+              <div class="hk-vital-indicators">
+                <!-- 9 Health Masks -->
+                <div class="hk-masks-row">
+                  <span class="mask-label">Masks:</span>
+                  <div class="masks-container" id="hk-masks">
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                    <span class="hk-mask active">🤍</span>
+                  </div>
+                </div>
+
+                <!-- Soul Vessel Container -->
+                <div class="soul-vessel-wrapper">
+                  <div class="soul-vessel-orb" id="soul-vessel-orb">
+                    <div class="soul-liquid" id="soul-liquid" style="height: 75%;"></div>
+                    <span class="soul-orb-glow"></span>
+                    <span class="soul-vessel-icon">✨</span>
+                  </div>
+                  <div class="soul-vessel-info">
+                    <span class="sv-title">SOUL VESSEL</span>
+                    <span class="sv-status" id="soul-status-text">Soul Level: 75% (Cast Spell or Focus)</span>
+                    <div class="soul-action-btns">
+                      <button class="soul-btn" onclick="castSoulSpell('blast')">Vengeful Spirit</button>
+                      <button class="soul-btn" onclick="castSoulSpell('focus')">Focus (Heal Mask)</button>
+                      <button class="soul-btn" onclick="castSoulSpell('fill')">Absorb Soul</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Geo Counter -->
+              <div class="geo-counter-bar">
+                <span class="geo-icon">🪙</span>
+                <span class="geo-label">Geo Collected:</span>
+                <span class="geo-number" id="geo-counter">14,850</span>
+                <button class="geo-gain-btn" onclick="gainGeo()">+50 Geo</button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Lore & Personal Reflection -->
+          <div class="game-info-card" data-reveal="fade-left">
+            <div class="soul-border-frame">
+              <span class="soul-subhead">// BENEATH DIRTMOUTH</span>
+              <h3 class="game-card-title">Why Varun Revering Hollow Knight:</h3>
+              <p class="game-lore-text">
+                <strong>Hollow Knight</strong> is, without question, one of the greatest games ever conceived. Its melancholic subterranean atmosphere, Christopher Larkin's breathtaking orchestral score, and surgical combat precision create an experience of pure gaming elevation.
+              </p>
+              <p class="game-lore-text">
+                Every boss fight—from the dance of the <em>Mantis Lords</em> to the tragic duel against the <em>Pure Vessel</em> and the radiance of the pantheons—teaches precision timing, pattern recognition, and calm focus under intense pressure. It mirrors software debugging: when hitboxes are tight, mistakes are yours to own and master.
+              </p>
+
+              <!-- Equipped Charms Loadout -->
+              <div class="hk-charms-showcase">
+                <h4 class="subhead-charms">🔮 Varun's Signature Charm Build:</h4>
+                <div class="charms-grid">
+                  <div class="charm-slot" title="Mark of Pride - Greatly increases the bearer's Nail range">
+                    <span class="charm-icon">🦅</span>
+                    <div class="charm-meta">
+                      <span class="charm-title">Mark of Pride</span>
+                      <span class="charm-notches">●●●</span>
+                    </div>
+                  </div>
+                  <div class="charm-slot" title="Quick Slash - Allows the bearer to slash much faster with their Nail">
+                    <span class="charm-icon">⚡</span>
+                    <div class="charm-meta">
+                      <span class="charm-title">Quick Slash</span>
+                      <span class="charm-notches">●●●</span>
+                    </div>
+                  </div>
+                  <div class="charm-slot" title="Shaman Stone - Increases the power and size of all Soul spells">
+                    <span class="charm-icon">🔮</span>
+                    <div class="charm-meta">
+                      <span class="charm-title">Shaman Stone</span>
+                      <span class="charm-notches">●●●</span>
+                    </div>
+                  </div>
+                  <div class="charm-slot" title="Wayward Compass - Whispers location on the Hallownest map">
+                    <span class="charm-icon">🧭</span>
+                    <div class="charm-meta">
+                      <span class="charm-title">Wayward Compass</span>
+                      <span class="charm-notches">●</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quote from Hallownest -->
+              <blockquote class="hk-quote">
+                "No mind to think. No will to break. No voice to cry suffering. Born of God and Void."
+              </blockquote>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 3. HOLLOW KNIGHT: SILKSONG: The Weavers' Citadel of Pharloom            -->
+    <!-- Theme: Crimson Silk Ribbons, Needle & Spool, Golden Amber, Chime Bells  -->
+    <!-- ======================================================================= -->
+    <div class="game-sanctum-wrapper silksong-theme" id="silksong-section">
+      <!-- Background Ambient Canvas for Weaving Crimson Silk Threads -->
+      <canvas id="silksong-ribbon-canvas" class="game-ambient-canvas"></canvas>
+
+      <div class="sanctum-container">
+        <!-- Game Themed Header -->
+        <div class="game-brand-banner" data-reveal="fade-up">
+          <div class="game-logo-wrapper silksong-glow">
+            <img src="assets/games/silksong_logo.png" alt="Hollow Knight Silksong Logo" class="official-game-logo">
+            <img src="assets/badges/silksong_hornet_badge.png" alt="Hornet Silk Badge" class="game-themed-badge float-animation">
+          </div>
+          <div class="game-meta-tags">
+            <span class="game-tag silksong-tag">🪡 Hornet's Pilgrimage</span>
+            <span class="game-tag silksong-tag">🏰 The Citadel of Pharloom</span>
+            <span class="game-tag silksong-tag">⚡ Aerial Acrobatics</span>
+            <span class="game-tag silksong-tag">🔥 Highly Anticipated</span>
+          </div>
+        </div>
+
+        <div class="game-showcase-grid">
+
+          <!-- Lore & Personal Reflection -->
+          <div class="game-info-card" data-reveal="fade-right">
+            <div class="silk-border-frame">
+              <span class="silk-subhead">// ASCEND TO THE CITADEL</span>
+              <h3 class="game-card-title">Why Varun is Hyped for Silksong:</h3>
+              <p class="game-lore-text">
+                Stepping into the boots of <strong>Hornet</strong>, the Princess-Protector of Hallownest, <strong>Hollow Knight: Silksong</strong> redefines Metroidvania movement with acrobatic verticality, sprint mantling, high-speed needle lunges, and an on-the-fly tool crafting system.
+              </p>
+              <p class="game-lore-text">
+                The shift from Hallownest's descent into ruin to Pharloom's ascent toward the shining citadel brings a radiant color palette of crimson silks, burning coral moss, and resonant bronze chimes. Team Cherry's craft represents the zenith of independent game development: uncompromising vision, artisanal hand-drawn animation, and flawless kinematic response.
+              </p>
+
+              <!-- Hornet's Weavers Arsenal -->
+              <div class="silksong-arsenal-box">
+                <h4 class="subhead-silk">🧵 Hornet's Weaver Arsenal:</h4>
+                <div class="arsenal-items-list">
+                  <div class="arsenal-item">
+                    <span class="ai-icon">🪡</span>
+                    <div class="ai-meta">
+                      <strong>The Weaver's Needle</strong>
+                      <span>Long-range piercing strikes, diagonal dive-kicks, and grappling silk thread tethering.</span>
+                    </div>
+                  </div>
+                  <div class="arsenal-item">
+                    <span class="ai-icon">🔔</span>
+                    <div class="ai-meta">
+                      <strong>Resonant Bell Chimes</strong>
+                      <span>Acoustic harmony warding off Pharloom's silk madness.</span>
+                    </div>
+                  </div>
+                  <div class="arsenal-item">
+                    <span class="ai-icon">💣</span>
+                    <div class="ai-meta">
+                      <strong>Pimpillo Bombs &amp; Sting Shards</strong>
+                      <span>Crafted on the run using scavenged shell shards and rosaries.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <blockquote class="silksong-quote">
+                "Shaw! Hegale! Ascend the silk-bound tower and sing the song of Pharloom."
+              </blockquote>
+
+            </div>
+          </div>
+
+          <!-- Interactive Silk Weaving Canvas & Hornet Spool Station -->
+          <div class="game-interactive-card" data-reveal="fade-left">
+            <div class="silksong-interactive-ui">
+              <div class="card-glass-header">
+                <span class="ui-title">🪡 Interactive Silk Weaver Canvas</span>
+                <span class="ui-tag">Move Mouse / Tap to Draw Silk</span>
+              </div>
+
+              <!-- Interactive Weaving Stage -->
+              <div class="silk-drawing-stage" id="silk-drawing-stage" title="Move your mouse or drag your finger here to weave glowing crimson silk strings!">
+                <img src="assets/games/silksong_screenshot.jpg" alt="Silksong Screenshot" class="stage-screenshot">
+                <canvas id="live-silk-canvas" class="live-silk-canvas"></canvas>
+                <div class="silk-hint-overlay">
+                  <span>✨ DRAG MOUSE TO WEAVE GLOWING SILK RIBBONS ✨</span>
+                </div>
+              </div>
+
+              <!-- Spool of Silk Meter -->
+              <div class="silksong-vital-panel">
+                <div class="spool-meter-wrapper">
+                  <div class="spool-top-row">
+                    <span class="spool-label">🧵 HORNET'S SILK SPOOL:</span>
+                    <span class="spool-count" id="silk-meter-text">8 / 8 Spools Ready</span>
+                  </div>
+                  <div class="silk-spool-slots" id="silk-spool-slots">
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                    <span class="spool-segment active"></span>
+                  </div>
+                </div>
+
+                <!-- Silk Actions -->
+                <div class="silk-action-buttons">
+                  <button class="silk-btn bind-btn" onclick="executeSilkBind()">
+                    <span>✨ Silk Bind (Heal)</span>
+                  </button>
+                  <button class="silk-btn needle-btn" onclick="executeNeedleLunge()">
+                    <span>🗡️ Needle Lunge (Shaw!)</span>
+                  </button>
+                  <button class="silk-btn bell-btn" onclick="ringPharloomBells()">
+                    <span>🔔 Ring Citadel Chime</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Rosary Bead String Counter -->
+              <div class="rosary-counter-bar">
+                <span class="rosary-icon">📿</span>
+                <span class="rosary-label">Strung Rosary Beads:</span>
+                <span class="rosary-number" id="rosary-counter">1,240</span>
+                <button class="rosary-string-btn" onclick="craftRosaryString()">+String Beads</button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- 4. WARHAMMER: VERMINTIDE 2: The End Times Horde                         -->
+    <!-- Theme: Skaven Warpstone Toxic Green, Burning Torches, Horde Cleave      -->
+    <!-- ======================================================================= -->
+    <div class="game-sanctum-wrapper vermintide-theme" id="vermintide-section">
+      <!-- Background Ambient Canvas for Radioactive Warpstone Sparks & Smoke -->
+      <canvas id="vermintide-warpstone-canvas" class="game-ambient-canvas"></canvas>
+
+      <div class="sanctum-container">
+        <!-- Game Themed Header -->
+        <div class="game-brand-banner" data-reveal="fade-up">
+          <div class="game-logo-wrapper vermintide-glow">
+            <img src="assets/games/vermintide2_logo.png" alt="Warhammer Vermintide 2 Logo" class="official-game-logo">
+            <img src="assets/badges/vermintide2_skaven_badge.png" alt="Skaven Warpstone Badge" class="game-themed-badge float-animation">
+          </div>
+          <div class="game-meta-tags">
+            <span class="game-tag vermintide-tag">☣️ Toxic Warpstone Grimdark</span>
+            <span class="game-tag vermintide-tag">⚔️ First-Person Melee Mastery</span>
+            <span class="game-tag vermintide-tag">🐀 Skaven &amp; Chaos Horde</span>
+            <span class="game-tag vermintide-tag">🛡️ Fatshark</span>
+          </div>
+        </div>
+
+        <div class="game-showcase-grid">
+
+          <!-- Interactive Horde Cleave Combat Simulator -->
+          <div class="game-interactive-card" data-reveal="fade-right">
+            <div class="vermintide-interactive-ui">
+              <div class="card-glass-header">
+                <span class="ui-title">☣️ Skaven Horde Cleave Arena</span>
+                <span class="ui-tag">Click Arena to Slay Vermin</span>
+              </div>
+
+              <!-- Interactive Cleave Arena -->
+              <div class="horde-cleave-stage" id="horde-cleave-stage" onclick="cleaveSkavenHorde(event)" title="Click rapidly to cleave incoming Skaven clanrats!">
+                <img src="assets/games/vermintide2_screenshot.jpg" alt="Vermintide 2 Screenshot" class="stage-screenshot">
+                <div class="cleave-blood-overlay" id="cleave-blood-overlay"></div>
+                <div class="warpstone-fissure-glow"></div>
+                <div class="horde-hint-overlay">
+                  <span>⚔️ CLICK TO CLEAVE THE SKAVEN SWARM ⚔️</span>
+                </div>
+                <!-- Dynamic Floating Damage Numbers will spawn here -->
+                <div id="damage-numbers-container"></div>
+              </div>
+
+              <!-- Combat Metrics & Adrenaline Meter -->
+              <div class="vermintide-vital-panel">
+                <div class="vital-row">
+                  <div class="vital-label-box">
+                    <span class="vital-icon">☣️</span>
+                    <span class="vital-name">WARPSTONE CORRUPTION</span>
+                    <span class="vital-val" id="warpstone-corruption-val">LOW (Safe)</span>
+                  </div>
+                  <div class="vital-track warp-track">
+                    <div class="vital-fill warp-fill" id="warpstone-fill" style="width: 25%;"></div>
+                  </div>
+                </div>
+
+                <!-- Horde Slay Counter -->
+                <div class="horde-slay-stats">
+                  <div class="slay-stat-box">
+                    <span class="slay-label">SKAVEN CLANRATS SLAIN</span>
+                    <span class="slay-count" id="skaven-kill-count">1,842</span>
+                  </div>
+                  <div class="slay-stat-box">
+                    <span class="slay-label">RAT OGRES FELLED</span>
+                    <span class="slay-count" id="ogre-kill-count">64</span>
+                  </div>
+                </div>
+
+                <!-- Cleave Action Buttons -->
+                <div class="vermintide-action-buttons">
+                  <button class="v2-btn cleave-btn" onclick="triggerHeavyCleave()">
+                    <span>💥 Heavy Halberd Cleave</span>
+                  </button>
+                  <button class="v2-btn bomb-btn" onclick="throwIncendiaryBomb()">
+                    <span>💣 Morgrim's Bomb</span>
+                  </button>
+                  <button class="v2-btn shout-btn" onclick="battleCaptainShout()">
+                    <span>📢 "For Karl Franz!" (War Cry)</span>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Lore & Personal Reflection -->
+          <div class="game-info-card" data-reveal="fade-left">
+            <div class="warpstone-border-frame">
+              <span class="warpstone-subhead">// THE UBICHECK 5 (OR 4, DOESN'T MATTER)</span>
+              <h3 class="game-card-title">Why Varun Loves Vermintide 2:</h3>
+              <p class="game-lore-text">
+                Set in the apocalyptic Warhammer Fantasy End Times, <strong>Warhammer: Vermintide 2</strong> is the undisputed champion of first-person melee combat. The visceral feedback of parrying an overhead stormvermin halberd, dodging a packmaster's hook, and cleaving through a sea of hundreds of ratmen is unmatched in tension and satisfaction.
+              </p>
+              <p class="game-lore-text">
+                The game demands razor-sharp teamwork, situational awareness, and split-second tactical prioritization. As someone who studies multithreaded systems, I am endlessly awed by Fatshark's crowd AI engine coordinating hundreds of distinct entities without dropping a frame on high-difficulty Cataclysm runs.
+              </p>
+
+              <!-- Ubersreik 5 Heroes Roster -->
+              <div class="ubersreik-roster">
+                <h4 class="subhead-ubersreik">🛡️ Varun's Top Played Careers:</h4>
+                <div class="careers-list">
+                  <div class="career-item" title="Victor Saltzpyre - Witch Hunter Captain">
+                    <span class="career-avatar">🎩</span>
+                    <div class="career-meta">
+                      <strong>Witch Hunter Captain (Saltzpyre)</strong>
+                      <span>Tagging elite targets for +20% damage, critical headshot rapier strikes.</span>
+                    </div>
+                  </div>
+                  <div class="career-item" title="Bardin Goreksson - Ironbreaker">
+                    <span class="career-avatar">🛡️</span>
+                    <div class="career-meta">
+                      <strong>Ironbreaker (Bardin)</strong>
+                      <span>Impenetrable Gromril armor, drakegun firestorm, frontline anchor.</span>
+                    </div>
+                  </div>
+                  <div class="career-item" title="Markus Kruber - Grail Knight">
+                    <span class="career-avatar">⚔️</span>
+                    <div class="career-meta">
+                      <strong>Grail Knight (Kruber)</strong>
+                      <span>Blessed Blade executioner strike for vaporizing Rat Ogres in one swing.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <blockquote class="vermintide-quote">
+                "Holy Sigmar, bless this ravaged body! The pact-sworn shall drown in their own warpstone filth!"
+              </blockquote>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Contact & Connect Section -->
+  <section class="section contact-section" id="contact">
+    <div class="section-container">
+      <div class="section-header" data-reveal="fade-up">
+        <span class="section-subtitle">// CONNECT &amp; COLLABORATE</span>
+        <h2 class="section-title">Let's Build Something Exceptional</h2>
+        <p class="section-lead">Whether you're looking to discuss software engineering, collaborate on an ambitious project, or form a co-op party on Steam—I'd love to hear from you!</p>
+        <div class="section-bar"></div>
+      </div>
+
+      <div class="contact-grid">
+        
+        <!-- Contact Information & Social Links -->
+        <div class="contact-info-col" data-reveal="fade-right">
+          <div class="info-card">
+            <h3>Varun Basnett</h3>
+            <p class="info-role">B.Tech Student &bull; Software &amp; Systems Developer</p>
+            <p class="info-bio">
+              Always eager to talk algorithms, modern web development, scalable engineering, and indie game architecture. Drop a line below or reach out directly!
+            </p>
+
+            <div class="contact-methods">
+              <div class="contact-method-item">
+                <span class="cm-icon">📧</span>
+                <div class="cm-details">
+                  <span class="cm-label">Email:</span>
+                  <a href="mailto:varunbasnett@example.com" class="cm-link" id="email-link">varunbasnett@example.com</a>
+                  <button class="copy-btn" id="copy-email-btn" onclick="copyEmailToClipboard()" title="Copy email address">
+                    Copy
+                  </button>
+                </div>
+              </div>
+
+              <div class="contact-method-item">
+                <span class="cm-icon">🎓</span>
+                <div class="cm-details">
+                  <span class="cm-label">Education:</span>
+                  <span class="cm-text">B.Tech in Engineering / Computer Science</span>
+                </div>
+              </div>
+
+              <div class="contact-method-item">
+                <span class="cm-icon">🎮</span>
+                <div class="cm-details">
+                  <span class="cm-label">Steam:</span>
+                  <span class="cm-text">Active Indie &amp; Co-op Completionist</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Links Grid -->
+            <div class="social-links-grid">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-pill github" title="GitHub Profile">
+                <span>🐙 GitHub</span>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-pill linkedin" title="LinkedIn Profile">
+                <span>💼 LinkedIn</span>
+              </a>
+              <a href="https://store.steampowered.com" target="_blank" rel="noopener noreferrer" class="social-pill steam" title="Steam Community">
+                <span>🎮 Steam</span>
+              </a>
+              <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="social-pill discord" title="Discord">
+                <span>💬 Discord</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <div class="contact-form-col" data-reveal="fade-left">
+          <form class="contact-form" id="contact-form" onsubmit="handleContactSubmit(event)">
+            <h3 class="form-title">Send a Message</h3>
+            
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Your Name</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Alex Hunter" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Your Email</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="e.g. alex@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-topic" class="form-label">Subject / Purpose</label>
+              <select id="contact-topic" class="form-select">
+                <option value="engineering">Engineering Project / Collaboration</option>
+                <option value="internship">Internship / Job Opportunity</option>
+                <option value="steam">Steam Co-op / Indie Games Discussion</option>
+                <option value="general">Saying Hello</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message</label>
+              <textarea id="contact-message" class="form-textarea" rows="5" placeholder="Share your thoughts, project ideas, or Steam game recommendations..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
+              <span>Send Message</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+
+            <!-- Form Status Alert -->
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-logo">&lt;VB /&gt; Varun Basnett</span>
+          <p class="footer-tagline">B.Tech Student &bull; Software Developer &bull; Steam Indie Devotee</p>
+        </div>
+
+        <div class="footer-nav">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#valheim-section">Valheim</a>
+          <a href="#hollow-knight-section">Hollow Knight</a>
+          <a href="#silksong-section">Silksong</a>
+          <a href="#vermintide-section">Vermintide 2</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Varun Basnett. All rights reserved. Built with semantic HTML5, modern CSS3, and JavaScript.</p>
+        <p class="footer-sub">Game assets, logos, and trademarks belong to Iron Gate Studio, Team Cherry, and Fatshark.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button with Circular Progress -->
+  <button class="back-to-top-btn" id="back-to-top" aria-label="Back to Top">
+    <svg class="progress-ring" width="48" height="48">
+      <circle class="progress-ring-circle" stroke="currentColor" stroke-width="3" fill="transparent" r="20" cx="24" cy="24"/>
+    </svg>
+    <span class="top-arrow">↑</span>
+  </button>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
